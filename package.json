@@ -1,0 +1,44 @@
+{
+  "name": "get-text-indices",
+  "version": "1.0.0",
+  "description": "A tool to help you find the start and the end index of a part of a string",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ./src/*.ts",
+    "lint:fix": "eslint ./src/*.ts --fix"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pr357/get-text-indices.git"
+  },
+  "keywords": [
+    "search",
+    "indices",
+    "indexes",
+    "get-text-indexes",
+    "get-text-indices"
+  ],
+  "author": "pr357",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pr357/get-text-indices/issues"
+  },
+  "homepage": "https://github.com/pr357/get-text-indices#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.21",
+    "@typescript-eslint/eslint-plugin": "^4.13.0",
+    "@typescript-eslint/parser": "^4.13.0",
+    "eslint": "^7.18.0",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.3"
+  }
+}
