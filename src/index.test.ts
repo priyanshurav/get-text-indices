@@ -3,18 +3,16 @@ import { getTextIndices } from '.';
 test('should calculate right text indices', () => {
   expect(
     getTextIndices('this is a simple sentence', 'simple', false)
-  ).toStrictEqual({
-    start: 10,
-    end: 15,
-  });
-  expect(getTextIndices('', 'simple', false)).toStrictEqual({
-    start: -1,
-    end: -1,
-  });
-  expect(getTextIndices('this is a simple sentence', '', false)).toStrictEqual({
-    start: -1,
-    end: -1,
-  });
+  ).toStrictEqual([
+    {
+      start: 10,
+      end: 15,
+    },
+  ]);
+  expect(getTextIndices('', 'simple', false)).toStrictEqual([]);
+  expect(getTextIndices('this is a simple sentence', '', false)).toStrictEqual(
+    []
+  );
 });
 
 test('should calculate right multiple text indices', () => {
@@ -45,7 +43,7 @@ test('should calculate right text indices without case sensitivity', () => {
     getTextIndices('This is a example text', 'this', false, {
       caseSensitive: false,
     })
-  ).toStrictEqual({ start: 0, end: 3 });
+  ).toStrictEqual([{ start: 0, end: 3 }]);
 });
 
 test('should calculate right text indices with case sensitivity', () => {
@@ -53,7 +51,7 @@ test('should calculate right text indices with case sensitivity', () => {
     getTextIndices('This is a example text', 'this', false, {
       caseSensitive: true,
     })
-  ).toStrictEqual({ start: -1, end: -1 });
+  ).toStrictEqual([]);
 });
 
 test('should calculate right multiple text indices with case sensitivity', () => {

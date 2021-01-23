@@ -5,9 +5,6 @@ interface TextIndicesSearchResult {
 interface Options {
   caseSensitive: boolean;
 }
-type GetTextIndicesReturnType<T> = T extends false
-  ? TextIndicesSearchResult
-  : TextIndicesSearchResult[];
 
 const defaultOptions: Options = { caseSensitive: true };
 
@@ -29,12 +26,12 @@ function stringEquals(
  * @param {boolean} multiple If this is set to true then the function will return an array of matches
  * @param {Options} options The options
  */
-export function getTextIndices<T extends boolean>(
+export function getTextIndices(
   fullStr: string,
   searchText: string,
-  multiple: T,
+  multiple: boolean,
   options: Options = defaultOptions
-): GetTextIndicesReturnType<T> {
+): TextIndicesSearchResult[] {
   if (typeof fullStr !== 'string') throw new Error(`'str' must be string`);
   else if (typeof searchText !== 'string')
     throw new Error(`'searchText' must be a string`);
@@ -46,7 +43,7 @@ export function getTextIndices<T extends boolean>(
   const regex = new RegExp(searchText, `g${caseSensitive ? '' : 'i'}`);
   const searchResults = [...fullStr.matchAll(regex)];
   const results: TextIndicesSearchResult[] = [];
-  if (!searchResults) return results as GetTextIndicesReturnType<T>;
+  if (!searchResults) return results;
   searchResults.forEach((result) => {
     const { index: startIndex } = result;
     if (typeof startIndex !== 'number') return;
@@ -57,11 +54,5 @@ export function getTextIndices<T extends boolean>(
         results.push({ start: startIndex, end: i });
     }
   });
-  if (multiple) {
-    return results as GetTextIndicesReturnType<T>;
-  } else {
-    return (results[0]
-      ? results[0]
-      : { start: -1, end: -1 }) as GetTextIndicesReturnType<T>;
-  }
+  return results;
 }
