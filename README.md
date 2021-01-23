@@ -16,13 +16,13 @@ $ npm install get-text-indices
 
 # Usage
 
-The first argument is the string to search in, the second argument is the string to search in the first argument, the third argument is the multiple, when set to true it will return an array of multiple matches, if set to false, it will return a single object containing the first search result, and the fourth argument, which is optional is the options object, in the option you can specify if you want a case-sensitive search or not, by default case-sensitivity is on.
+The first argument is the string to search in, the second argument is the string to search in the first argument, the third argument is the multiple, when set to true it will return an array of multiple matches, if set to false, it will return an array with a single object containing the first search result, and the fourth argument, which is optional is the options object, in the option you can specify if you want a case-sensitive search or not, by default case-sensitivity is on.
 
 ```javascript
 const { getTextIndices } = require('get-text-indices');
 
 // To find the first match with case-sensitivity on
-console.log(getTextIndices('a SAMPLE sample sentence', 'sample', false)); // { start: 9, end: 14 }
+console.log(getTextIndices('a SAMPLE sample sentence', 'sample', false)); // [ { start: 9, end: 14 } ]
 
 // To find multiple matches with case-sensitivity on
 console.log(getTextIndices('a SAMPLE sample sentence', 'sample', true)); // [ { start: 9, end: 14 } ]
@@ -30,7 +30,7 @@ console.log(getTextIndices('a SAMPLE sample sentence', 'sample', true)); // [ { 
 // To find the first match with case-sensitivity off
 console.log(
   getTextIndices('a SAMPLE sentence', 'sample', false, { caseSensitive: false })
-); // { start: 2, end: 7 }
+); // [ { start: 2, end: 7 } ]
 
 // To find multiple matches with case-sensitivity off
 console.log(
@@ -38,6 +38,9 @@ console.log(
     caseSensitive: false,
   })
 ); // [ { start: 2, end: 7 }, { start: 9, end: 14 } ]
+
+// When no result is found then it returns an empty array
+console.log(getTextIndices('', 'sample', false)); // []
 ```
 
 # Contributing
