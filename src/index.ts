@@ -29,7 +29,7 @@ function stringEquals(
 export function getTextIndices(
   fullStr: string,
   searchText: string,
-  multiple: boolean,
+  multiple = false,
   options: Options = defaultOptions
 ): TextIndicesSearchResult[] {
   if (typeof fullStr !== 'string') throw new Error(`'str' must be string`);
