@@ -1,12 +1,12 @@
-interface TextIndicesSearchResult {
+export interface TextIndicesSearchResult {
   start: number;
   end: number;
 }
-interface Options {
+export interface GetTextIndicesOptions {
   caseSensitive: boolean;
 }
 
-const defaultOptions: Options = { caseSensitive: true };
+const defaultOptions: GetTextIndicesOptions = { caseSensitive: true };
 
 function stringEquals(
   str1: string,
@@ -24,15 +24,15 @@ function stringEquals(
  * @param {string} fullStr The string to search on
  * @param {string} searchText The string to find indices in the 'fullStr'
  * @param {boolean} multiple If this is set to true then the function will return an array of matches
- * @param {Options} options The options
+ * @param {GetTextIndicesOptions} options The options
  */
 export function getTextIndices(
   fullStr: string,
   searchText: string,
   multiple = false,
-  options: Options = defaultOptions
+  options: GetTextIndicesOptions = defaultOptions
 ): TextIndicesSearchResult[] {
-  if (typeof fullStr !== 'string') throw new Error(`'str' must be string`);
+  if (typeof fullStr !== 'string') throw new Error(`'fullStr' must be string`);
   else if (typeof searchText !== 'string')
     throw new Error(`'searchText' must be a string`);
   else if (typeof multiple !== 'boolean')
