@@ -13,10 +13,12 @@ A tool to help you find the start and the end index of a part of a string
 
 - [Installation](#installation)
 - [Documentation](#documentation)
+  1.  [Usage in JavaScript](#usage-in-javascript)
+  2.  [Using the provided types in TypeScript](#using-the-provided-types-in-typescript)
 - [Contributing](#contributing)
 - [License](#license)
 
-# [Installation](#installation)
+# Installation
 
 ```bash
 npm install get-text-indices
@@ -28,7 +30,7 @@ Or, if you prefer yarn
 yarn add get-text-indices
 ```
 
-# [Documentation](#documentation)
+# Documentation
 
 There is only a single function exported from this module which is `getTextIndices()`.
 The first argument of that function is the string to search in, the second argument is the string to search in the first argument, the third argument is the multiple, by default it is set to false, when set to true it will return an array of multiple matches, if set to false, it will return an array with a single object containing the first search result, and the fourth argument, which is optional is the options object, in the option you can specify if you want a case-sensitive search or not, by default case-sensitivity is on.
@@ -83,10 +85,10 @@ const result: TextIndicesSearchResult[] = getTextIndices(
 console.log(result); // [ { start: 0, end 5 } ]
 ```
 
-# [Contributing](#contributing)
+# Contributing
 
 Contributions are welcome! See the [contribution guide](https://github.com/pr357/get-text-indices/blob/main/CONTRIBUTING.md) for more info.
 
-# [License](#license)
+# License
 
 This software is licensed under the [MIT License](https://choosealicense.com/licenses/mit/). See the [LICENSE](https://github.com/pr357/get-text-indices/blob/main/LICENSE) for more info
