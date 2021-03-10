@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pr357/get-text-indices.git"
+    "url": "git+https://github.com/priyanshurav/get-text-indices.git"
   },
   "keywords": [
     "search",
@@ -28,9 +28,9 @@
   "author": "pr357",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pr357/get-text-indices/issues"
+    "url": "https://github.com/priyanshurav/get-text-indices/issues"
   },
-  "homepage": "https://github.com/pr357/get-text-indices#readme",
+  "homepage": "https://github.com/priyanshurav/get-text-indices#readme",
   "devDependencies": {
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.21",
