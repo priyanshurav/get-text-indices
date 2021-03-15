@@ -1,6 +1,6 @@
 {
   "name": "get-text-indices",
-  "version": "2.2.4",
+  "version": "3.0.0",
   "description": "A tool to help you find the start and the end index of a part of a string",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
