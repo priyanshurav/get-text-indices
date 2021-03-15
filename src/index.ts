@@ -1,12 +1,16 @@
-export interface TextIndicesSearchResult {
+export interface GetTextIndicesSearchResult {
   start: number;
   end: number;
 }
 export interface GetTextIndicesOptions {
-  caseSensitive: boolean;
+  caseSensitive?: boolean;
+  multiple?: boolean;
 }
 
-const defaultOptions: GetTextIndicesOptions = { caseSensitive: true };
+const defaultOptions: GetTextIndicesOptions = {
+  caseSensitive: true,
+  multiple: false,
+};
 
 function stringEquals(
   str1: string,
@@ -29,20 +33,22 @@ function stringEquals(
 export function getTextIndices(
   fullStr: string,
   searchText: string,
-  multiple = false,
   options: GetTextIndicesOptions = defaultOptions
-): TextIndicesSearchResult[] {
+): GetTextIndicesSearchResult[] {
+  const { caseSensitive, multiple } = {
+    ...defaultOptions,
+    ...options,
+  } as Required<GetTextIndicesOptions>;
+
   if (typeof fullStr !== 'string') throw new Error(`'fullStr' must be string`);
   else if (typeof searchText !== 'string')
     throw new Error(`'searchText' must be a string`);
   else if (typeof multiple !== 'boolean')
     throw new Error(`'multiple' must be a boolean`);
 
-  const { caseSensitive } = options;
-
   const regex = new RegExp(searchText, `g${caseSensitive ? '' : 'i'}`);
   const searchResults = [...fullStr.matchAll(regex)];
-  const results: TextIndicesSearchResult[] = [];
+  const results: GetTextIndicesSearchResult[] = [];
   if (!searchResults) return results;
   searchResults.forEach((result) => {
     const { index: startIndex } = result;
