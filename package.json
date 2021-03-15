@@ -4,6 +4,9 @@
   "description": "A tool to help you find the start and the end index of a part of a string",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "lib/"
+  ],
   "scripts": {
     "test": "jest",
     "build": "tsc",
