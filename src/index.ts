@@ -12,17 +12,6 @@ const defaultOptions: GetTextIndicesOptions = {
   multiple: false,
 };
 
-function stringEquals(
-  str1: string,
-  str2: string,
-  caseSensitive: boolean
-): boolean {
-  return (
-    (caseSensitive ? str1 : str1.toLowerCase()) ===
-    (caseSensitive ? str2 : str2.toLowerCase())
-  );
-}
-
 /**
  * Finds the indices of the 'searchText' in the 'fullStr'
  * @param {string} fullStr The string to search on
@@ -52,13 +41,11 @@ export function getTextIndices(
   if (!searchResults) return results;
   searchResults.forEach((result) => {
     const { index: startIndex } = result;
-    if (typeof startIndex !== 'number') return;
-    let foundedText = '';
-    for (let i = startIndex; i < fullStr.length; i++) {
-      foundedText += fullStr[i];
-      if (stringEquals(foundedText, searchText, caseSensitive))
-        results.push({ start: startIndex, end: i });
-    }
+    if (typeof startIndex !== 'number' || !searchText) return;
+    results.push({
+      start: startIndex,
+      end: startIndex + (searchText.length - 1),
+    });
   });
   return results;
 }
