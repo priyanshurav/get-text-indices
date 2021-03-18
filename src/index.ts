@@ -16,7 +16,6 @@ const defaultOptions: GetTextIndicesOptions = {
  * Finds the indices of the 'searchText' in the 'fullStr'
  * @param {string} fullStr The string to search on
  * @param {string} searchText The string to find indices in the 'fullStr'
- * @param {boolean} multiple If this is set to true then the function will return an array of matches
  * @param {GetTextIndicesOptions} options The options
  */
 export function getTextIndices(
